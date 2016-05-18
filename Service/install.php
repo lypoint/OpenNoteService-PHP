@@ -56,14 +56,14 @@
 					if($_GET==null){
 						//Checks
 							if(!is_writable("./Config.php"))
-								$errors[] = "<p>Config.php is not writable</p>";
+								$errors[] = "<p>Config.php 不可写</p>";
 							
 							if(!is_writable("./upload/"))
-								$errors[] = "<p>Upload directory is not writable</p>";
+								$errors[] = "<p>Upload 文件夹不可写</p>";
 	
 						if(!count($errors)){
-							echo "	<p>All checks so far look good.</p>
-									<a href='?step=1' class='btn btn-default'>Start Install</a>";
+							echo "	<p>检查通过.</p>
+									<a href='?step=1' class='btn btn-default'>点击安装</a>";
 							return;
 						}
 						else
@@ -75,7 +75,7 @@
 				//All other steps
 					switch ($_GET["step"]){
 						case "1":
-							echo "	<p>Please select a database type you wish to use:</p>
+							echo "	<p>请选择您服务器支持的数据库:</p>
 									<p><a href='?step=2-mysql' class='btn btn-default'>MySQL(Recomended)</a></p>
 									<p><a href='?step=2-sqlite' class='btn btn-default'>sqlite</a></p>";
 								
@@ -151,11 +151,11 @@
 							break;
 							
 						case "cleanup":
-							echo "<p>Install Complete</p>";
+							echo "<p>安装完成。</p>";
 							if(!unlink("./Config.template"))
-								echo "<p>Was unable to delete Config.template. Please delete it manually.</p>";
+								echo "<p>删除Config.template失败， 出于安全性考虑，请手动删除。</p>";
 							if(!unlink("./install.php"))
-								echo "<p>Was unable to delete Install.php. Please delete it manually.</p>";
+								echo "<p>删除Install.php失败， 出于安全性考虑，请手动删除。</p>";
 							break;
 					}
 			?>
